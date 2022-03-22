@@ -12,10 +12,23 @@ function App() {
     return factNumber;
   };
 
+  const insertDash = (number) => {
+    var strNumber = number.split("");
+    var num = strNumber.map(Number);
+
+    for (var i = 0; i < num.length; i++) {
+      if (num[i - 1] % 2 === 0 && num[i] % 2 === 0) {
+        num.splice(i, 0, "-");
+      }
+    }
+    return num.join("");
+  };
+
   return (
     <div className="App">
       Console Log It!!
-      {console.log(factorial(4))}
+      {console.log("Factorial Result: ", factorial(4))}
+      {console.log("Insert Dash Result: ", insertDash("4162312"))}
     </div>
   );
 }
