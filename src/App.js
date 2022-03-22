@@ -1,10 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 function App() {
+  const factorial = (number) => {
+    var factNumber = number;
+    if (number === 0 || number === 1) return 1;
+
+    while (number > 1) {
+      number--;
+      factNumber *= number;
+    }
+    return factNumber;
+  };
+
   return (
     <div className="App">
-      Test
+      Console Log It!!
+      {console.log(factorial(4))}
     </div>
   );
 }
