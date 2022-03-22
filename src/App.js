@@ -24,11 +24,37 @@ function App() {
     return num.join("");
   };
 
+  const bracket = function (inp) {
+    const status = false;
+    const maps = {
+      "(": ")",
+      "{": "}",
+      "[": "]",
+    };
+
+    const char = [];
+
+    for (let a = 0; a < inp.length; a++) {
+      if (maps[inp[a]]) {
+        char.push(maps[inp[a]]);
+      } else {
+        if (char.pop() !== inp[a]) {
+          return status;
+        }
+      }
+    }
+
+    return char.length === 0;
+  };
+
   return (
     <div className="App">
       Console Log It!!
-      {console.log("Factorial Result: ", factorial(4))}
-      {console.log("Insert Dash Result: ", insertDash("4162312"))}
+      {console.log("Insert Factorial Result: ", factorial(8)) /*40320*/}
+      {console.log("Insert Dash Result: ", insertDash("553847")) /*5538-47*/}
+      {console.log("Insert Dash Result: ", insertDash("2468")) /*2-4-6-8*/}
+      {console.log("Insert Bracket Result: ", bracket("({[]})")) /*true*/}
+      {console.log("Insert Bracket Result: ", bracket("({[]))")) /*false*/}
     </div>
   );
 }
